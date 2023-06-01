@@ -12,19 +12,24 @@ class FlavorControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState(prevState =>({formVisibleOnPage: !prevState.formVisibleOnPage}));
+  }
+
   render() {
     let currentlyVisibleState = null;
-    let addFlavorButton = null;
+    let buttonText = null;
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewFlavorForm />
+      buttonText= "Return to Flavor List";
     } else {
       currentlyVisibleState = <FlavorList />
-      addFlavorButton= <button onClick = {this.handleClick}>Add Flavor</button>
+      buttonText= "Add Flavor";
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        {addFlavorButton}
+        <button onClick = {this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
