@@ -24,7 +24,7 @@ class FlavorControl extends React.Component {
       currentlyVisibleState = <NewFlavorForm />
       buttonText= "Return to Flavor List";
     } else {
-      currentlyVisibleState = <FlavorList />
+      currentlyVisibleState = <FlavorList flavorList = {this.state.mainFlavorList} />
       buttonText= "Add Flavor";
     }
     return (

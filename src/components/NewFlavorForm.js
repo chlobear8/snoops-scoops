@@ -1,6 +1,12 @@
 import React from "react";
 
-function NewFlavorForm(props) {
+function NewFlavorForm() {
+
+  function handleNewFlavorFormSubmission(event)
+  {
+    event.preventDefault();
+    console.log(event.target.name.value);
+  }
   return (
     <React.Fragment>
       <form onSubmit = {handleNewFlavorFormSubmission}>
