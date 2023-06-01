@@ -17,6 +17,12 @@ class FlavorControl extends React.Component {
     this.setState(prevState =>({formVisibleOnPage: !prevState.formVisibleOnPage}));
   }
 
+  handleAddingNewFlavor = (newFlavor) => {
+    const newMainFlavorList = this.state.mainFlavorList.concat(newFlavor);
+    this.setState({mainFlavorList: newMainFlavorList,
+                                  formVisibleOnPage: false});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
