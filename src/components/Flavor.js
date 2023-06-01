@@ -17,7 +17,7 @@ function Flavor(props) {
 Flavor.propTypes = {
   name: PropTypes.string,
   flavor: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   allergies: PropTypes.string,
   id: PropTypes.string
 }
