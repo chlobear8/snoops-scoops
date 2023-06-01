@@ -10,6 +10,7 @@ class FlavorControl extends React.Component {
       formVisibleOnPage: false,
       mainFlavorList: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
