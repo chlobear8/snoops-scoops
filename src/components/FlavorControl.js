@@ -1,4 +1,5 @@
 import React from "react";
+import NewFlavorForm from "./NewFlavorForm";
 import FlavorList from "./FlavorList";
 
 class FlavorControl extends React.Component {
@@ -10,11 +11,13 @@ class FlavorControl extends React.Component {
     };
   }
 
-  // render() {
-  //   return (
-
-  //   );
-  // }
+  render() {
+    return (
+      <React.Fragment>
+        
+      </React.Fragment>
+    );
+  }
 
 }
 

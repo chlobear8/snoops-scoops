@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import FlavorList from "./FlavorList";
+import FlavorControl from "./FlavorControl";
   
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <FlavorList />
+      <TicketControl />
     </React.Fragment>
   );
 }
