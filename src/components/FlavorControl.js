@@ -27,7 +27,7 @@ class FlavorControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewFlavorForm />
+      currentlyVisibleState = <NewFlavorForm onNewFlavorCreation = {this.handleAddingNewFlavor} />
       buttonText= "Return to Flavor List";
     } else {
       currentlyVisibleState = <FlavorList flavorList = {this.state.mainFlavorList} />

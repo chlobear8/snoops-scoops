@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function NewFlavorForm() {
+function NewFlavorForm(props) {
 
   function handleNewFlavorFormSubmission(event)
   {
@@ -30,5 +31,9 @@ function NewFlavorForm() {
     </React.Fragment>
   );
 }
+
+NewFlavorForm.propTypes = {
+  onNewFlavorCreation: PropTypes.func
+};
 
 export default NewFlavorForm;
