@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Flavor(props) {
   return (
     <React.Fragment>
-      <div>
+      <div onClick = {() => props.whenFlavorClicked(props.id)}>
         <h3>{props.name} - {props.price}</h3>
         <h3>{props.flavor}</h3>
         <p><em>{props.allergies}</em></p>
@@ -19,7 +19,8 @@ Flavor.propTypes = {
   flavor: PropTypes.string,
   price: PropTypes.number,
   allergies: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  whenFlavorClicked: PropTypes.func
 }
 
 export default Flavor;
