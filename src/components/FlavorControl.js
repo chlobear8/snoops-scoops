@@ -2,6 +2,7 @@ import React from "react";
 import NewFlavorForm from "./NewFlavorForm";
 import FlavorList from "./FlavorList";
 import FlavorDetail from "./FlavorDetail";
+import EditFlavorForm from './EditFlavorForm';
 
 class FlavorControl extends React.Component {
 
@@ -48,7 +49,10 @@ class FlavorControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.selectedFlavor != null) {
+    if (this.state.editing) {
+      currentlyVisibleState = <EditFlavorForm flavor = {this.state.selectedFlavor} />
+      buttonText= "Return to Flavor List";
+    } else if (this.state.selectedFlavor != null) {
       currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} onClickingEdit = {this.handleEditClick} />
       buttonText= "Return to Flavors List";
     } else if (this.state.formVisibleOnPage) {
