@@ -45,12 +45,23 @@ class FlavorControl extends React.Component {
     this.setState({editing: true});
   }
 
+  handleEditingFlavor = (flavorToEdit) => {
+    const editedMainFlavorList = this.state.mainFlavorList
+                              .filter(flavor => flavor.id !== this.state.selectedFlavor.id)
+                              .concat(flavorToEdit);
+                              this.setState({
+                                mainFlavorList:editedMainFlavorList,
+                                editing: false,
+                                selectedFlavor: null
+                              });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.editing) {
-      currentlyVisibleState = <EditFlavorForm flavor = {this.state.selectedFlavor} />
+      currentlyVisibleState = <EditFlavorForm flavor = {this.state.selectedFlavor} onEditFlavor = {this.handleEditingFlavor} />
       buttonText= "Return to Flavor List";
     } else if (this.state.selectedFlavor != null) {
       currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} onClickingEdit = {this.handleEditClick} />

@@ -10,4 +10,4 @@ function EditFlavorForm(props) {
   );
 }
 
-export defaul EditFlavorForm;
+export default EditFlavorForm;
