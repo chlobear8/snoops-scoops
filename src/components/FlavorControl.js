@@ -1,6 +1,7 @@
 import React from "react";
 import NewFlavorForm from "./NewFlavorForm";
 import FlavorList from "./FlavorList";
+import FlavorDetail from "./FlavorDetail";
 
 class FlavorControl extends React.Component {
 
@@ -32,11 +33,15 @@ class FlavorControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+
+    if (this.state.selectedFlavor != null) {
+      currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} />
+      buttonText= "Return to Flavors List";
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewFlavorForm onNewFlavorCreation = {this.handleAddingNewFlavor} />
       buttonText= "Return to Flavor List";
     } else {
-      currentlyVisibleState = <FlavorList flavorList = {this.state.mainFlavorList} />
+      currentlyVisibleState = <FlavorList flavorList = {this.state.mainFlavorList} onFlavorSelection = {this.handleChangingSelectedFlavor} />
       buttonText= "Add Flavor";
     }
     return (
