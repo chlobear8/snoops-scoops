@@ -12,7 +12,8 @@ class FlavorControl extends React.Component {
       formVisibleOnPage: false,
       mainFlavorList: [],
       selectedFlavor: null,
-      editing: false
+      editing: false,
+      inventoried: false
     };
   }
 
@@ -21,7 +22,8 @@ class FlavorControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedFlavor: null,
-        editing: false
+        editing: false,
+        inventoried: false
       });
     } else {
       this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage,
@@ -54,6 +56,17 @@ class FlavorControl extends React.Component {
                                 editing: false,
                                 selectedFlavor: null
                               });
+  }
+
+  handleInventoryTracker = (flavorToDecrease) => {
+    const inventoriedMainFlavorToList = this.state.mainFlavorList
+                                    .filter(flavor => flavor.id !== this.state.selectedFlavor.id)
+                                    .concat(flavorToDecrease);
+                                    this.setState({
+                                      mainFlavorList: inventoriedMainFlavorToList,
+                                      inventoried: false,
+                                      selectedFlavor: null
+    });
   }
 
   render() {
