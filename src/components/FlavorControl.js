@@ -10,16 +10,17 @@ class FlavorControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainFlavorList: [],
-      selectedFlavor: null
+      selectedFlavor: null,
+      editing: false
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
     if (this.state.selectedFlavor != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedFlavor: null
+        selectedFlavor: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage,
@@ -38,12 +39,17 @@ class FlavorControl extends React.Component {
     this.setState({selectedFlavor: selectedFlavor});
   }
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.setState({editing: true});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedFlavor != null) {
-      currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} />
+      currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} onClickingEdit = {this.handleEditClick} />
       buttonText= "Return to Flavors List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewFlavorForm onNewFlavorCreation = {this.handleAddingNewFlavor} />
@@ -59,7 +65,6 @@ class FlavorControl extends React.Component {
       </React.Fragment>
     );
   }
-
 }
 
 export default FlavorControl;
