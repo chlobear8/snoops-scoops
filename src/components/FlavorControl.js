@@ -24,6 +24,11 @@ class FlavorControl extends React.Component {
                                   formVisibleOnPage: false});
   }
 
+  handleChangingSelectedFlavor = (id) => {
+    const selectedFlavor = this.state.mainFlavorList.filter(flavor => flavor.id === id)[0];
+    this.setState({selectedFlavor: selectedFlavor});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
