@@ -8,7 +8,8 @@ class FlavorControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainFlavorList: []
+      mainFlavorList: [],
+      selectedFlavor: null
     };
     this.handleClick = this.handleClick.bind(this);
   }
