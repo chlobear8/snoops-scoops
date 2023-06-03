@@ -16,7 +16,15 @@ class FlavorControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState =>({formVisibleOnPage: !prevState.formVisibleOnPage}));
+    if (this.state.selectedFlavor != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedFlavor: null
+      });
+    } else {
+      this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }
 
   handleAddingNewFlavor = (newFlavor) => {
