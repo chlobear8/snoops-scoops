@@ -3,6 +3,7 @@ import NewFlavorForm from "./NewFlavorForm";
 import FlavorList from "./FlavorList";
 import FlavorDetail from "./FlavorDetail";
 import EditFlavorForm from './EditFlavorForm';
+import PurchaseFlavor from "./PurchaseFlavor";
 
 class FlavorControl extends React.Component {
 
@@ -43,7 +44,6 @@ class FlavorControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handleEditClick reached!");
     this.setState({editing: true});
   }
 
@@ -73,7 +73,12 @@ class FlavorControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.editing) {
+    if (this.state.inventoried) {
+      currentlyVisibleState = (<PurchaseFlavor flavor = {this.state.selectedFlavor}
+      initialInventoryCount={130} onPurchaseFlavor = {this.handleInventoryTracker} />
+      );
+      buttonText= "Return to Flavor List";
+    } else if (this.state.editing) {
       currentlyVisibleState = <EditFlavorForm flavor = {this.state.selectedFlavor} onEditFlavor = {this.handleEditingFlavor} />
       buttonText= "Return to Flavor List";
     } else if (this.state.selectedFlavor != null) {
