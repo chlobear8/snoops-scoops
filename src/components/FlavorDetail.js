@@ -10,6 +10,7 @@ function FlavorDetail(props) {
         <h3>{flavor.flavor}</h3>
         <p><em>{flavor.allergies}</em></p>
       <button onClick = { props.onClickingEdit }>Update Flavor</button>
+      <button onClick = { props.onClickingPurchase }>Purchase Pint?</button>
       <hr/>
     </React.Fragment>
   );
@@ -17,7 +18,8 @@ function FlavorDetail(props) {
 
 FlavorDetail.propTypes = {
   flavor: PropTypes.object,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  onClickingPurchase: PropTypes.func
 };
 
 export default FlavorDetail;

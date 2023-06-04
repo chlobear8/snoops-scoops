@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PurchaseFlavor(props) {
-  const { flavor, initialInventoryCount } = props;
+  const { flavor, initialInventoryCount, onPurchaseFlavor } = props;
 
   const decreaseInventory = () => {
     if (initialInventoryCount > 0) {
-      initialInventoryCount -= 1;
+      onPurchaseFlavor(flavor);
     }
   };
 
@@ -20,7 +20,8 @@ function PurchaseFlavor(props) {
 
 PurchaseFlavor.propTypes = {
   flavor: PropTypes.string,
-  initialInventoryCount: PropTypes.number
+  initialInventoryCount: PropTypes.number,
+  onPurchaseFlavor: PropTypes.func
 }
 
 export default PurchaseFlavor;

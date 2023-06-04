@@ -14,6 +14,7 @@ class FlavorControl extends React.Component {
       mainFlavorList: [],
       selectedFlavor: null,
       editing: false,
+      initialInventoryCount: 130,
       inventoried: false
     };
   }
@@ -58,31 +59,34 @@ class FlavorControl extends React.Component {
                               });
   }
 
+  handlePurchaseClick = () => {
+    this.setState({inventoried: true});
+  }
+
   handleInventoryTracker = (flavorToDecrease) => {
-    const inventoriedMainFlavorToList = this.state.mainFlavorList
-                                    .filter(flavor => flavor.id !== this.state.selectedFlavor.id)
-                                    .concat(flavorToDecrease);
-                                    this.setState({
-                                      mainFlavorList: inventoriedMainFlavorToList,
-                                      inventoried: false,
-                                      selectedFlavor: null
-    });
+    const updatedCount = this.state.initialInventoryCount - 1;        
+    this.setState({
+      initialInventoryCount: updatedCount,
+      inventoried: false,
+      selectedFlavor: null
+    });                       
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
+    const { initialInventoryCount } = this.state;
 
     if (this.state.inventoried) {
       currentlyVisibleState = (<PurchaseFlavor flavor = {this.state.selectedFlavor}
-      initialInventoryCount={130} onPurchaseFlavor = {this.handleInventoryTracker} />
-      );
+      initialInventoryCount={initialInventoryCount}
+      onPurchaseFlavor = {this.handleInventoryTracker} />)
       buttonText= "Return to Flavor List";
     } else if (this.state.editing) {
       currentlyVisibleState = <EditFlavorForm flavor = {this.state.selectedFlavor} onEditFlavor = {this.handleEditingFlavor} />
       buttonText= "Return to Flavor List";
     } else if (this.state.selectedFlavor != null) {
-      currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} onClickingEdit = {this.handleEditClick} />
+      currentlyVisibleState = <FlavorDetail flavor = {this.state.selectedFlavor} onClickingEdit = {this.handleEditClick} onClickingPurchase = {this.handlePurchaseClick} />
       buttonText= "Return to Flavors List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewFlavorForm onNewFlavorCreation = {this.handleAddingNewFlavor} />
