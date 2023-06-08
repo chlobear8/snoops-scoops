@@ -15,9 +15,9 @@ function Flavor(props) {
 }
 
 Flavor.propTypes = {
-  name: PropTypes.string,
-  flavor: PropTypes.string,
-  price: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  flavor: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   allergies: PropTypes.string,
   id: PropTypes.string,
   whenFlavorClicked: PropTypes.func

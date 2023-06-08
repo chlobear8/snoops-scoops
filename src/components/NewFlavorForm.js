@@ -11,7 +11,7 @@ function NewFlavorForm(props) {
     props.onNewFlavorCreation({
       name: event.target.name.value,
       flavor: event.target.flavor.value,
-      price: event.target.price.value,
+      price: parseInt(event.target.price.value),
       allergies: event.target.allergies.value,
       id: v4()
     });

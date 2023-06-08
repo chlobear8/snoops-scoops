@@ -19,7 +19,7 @@ function PurchaseFlavor(props) {
 }
 
 PurchaseFlavor.propTypes = {
-  flavor: PropTypes.string,
+  flavor: PropTypes.object,
   initialInventoryCount: PropTypes.number,
   onPurchaseFlavor: PropTypes.func
 }
